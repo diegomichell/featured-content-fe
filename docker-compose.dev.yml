@@ -1,0 +1,12 @@
+services:
+  featured-content-fe:
+    container_name: featured-content-fe
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    volumes:
+      - ./src:/app/src
+    ports:
+      - "9000:9000"
+    environment:
+      PORT: 9000

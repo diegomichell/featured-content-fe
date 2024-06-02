@@ -1,0 +1,8 @@
+services:
+  featured-content-fe:
+    container_name: featured-content-fe
+    build:
+      context: .
+      dockerfile: Dockerfile.prod
+    ports:
+      - "8080:80"

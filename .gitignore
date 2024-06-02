@@ -43,3 +43,14 @@ yarn-error.log*
 !.yarn/releases
 !.yarn/plugins
 .pnp.*
+
+# dotenv environment variable files
+.env
+.env.development.local
+.env.test.local
+.env.production.local
+.env.local
+
+# temp directory
+.temp
+.tmp
