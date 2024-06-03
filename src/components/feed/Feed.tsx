@@ -1,26 +1,39 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import {useGetFeedQuery} from "../../services/feed";
 import LoadingIndicator from "../loading-indicator/LoadingIndicator";
 import Heading from "../heading/Heading";
 import ArticleCard from "../article-card/ArticleCard";
 import ReactPaginate from "react-paginate";
+import {toast} from "react-toastify";
+import {ApiError} from "../../types/errors";
 
 interface IFeedProps {
   feedDate?: Date;
+  feedLanguage?: string;
   pageSize: number;
 }
 
 const DEFAULT_DATE = new Date();
 
-const Feed: React.FC<IFeedProps> = ({feedDate, pageSize}) => {
+const Feed: React.FC<IFeedProps> = ({feedDate, pageSize, feedLanguage}) => {
   const pageClassName = 'flex items-center justify-center px-4 leading-tight text-gray-500 bg-white border border-gray-300 hover:bg-gray-100 hover:text-gray-700';
-  const {data, isFetching} = useGetFeedQuery({
+  const {data, isFetching, error} = useGetFeedQuery({
     language: 'en', date: {
       year: (feedDate || DEFAULT_DATE).getFullYear(),
       month: (feedDate || DEFAULT_DATE).getMonth(),
       day: (feedDate || DEFAULT_DATE).getDate(),
-    }
+    },
+    targetLanguage: feedLanguage
   });
+
+  useEffect(() => {
+    if(error) {
+      const apiError = error as ApiError;
+      toast(apiError.data.message, {
+        type: 'error'
+      })
+    }
+  }, [error])
 
   const items = data?.mostread?.articles || []
   const [itemOffset, setItemOffset] = useState(0);

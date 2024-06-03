@@ -9,6 +9,7 @@ import {DEFAULT_ITEMS_PER_PAGE} from "../utils";
 
 function Home() {
   const [selectedDate, setSelectedDate] = useState<Date>();
+  const [selectedLanguage, setSelectedLanguage] = useState<string>();
   const [pageSize, setPageSize] = useState(DEFAULT_ITEMS_PER_PAGE);
 
   return (
@@ -22,12 +23,14 @@ function Home() {
 
       <FiltersForm
         pageSize={pageSize}
+        selectedLanguage={selectedLanguage}
+        onSelectLanguage={setSelectedLanguage}
         selectedDate={selectedDate}
         onSelectDate={setSelectedDate}
         onPageSizeChanged={setPageSize}
       />
 
-      <Feed feedDate={selectedDate} pageSize={pageSize}/>
+      <Feed feedLanguage={selectedLanguage} feedDate={selectedDate} pageSize={pageSize}/>
     </div>
   );
 }
