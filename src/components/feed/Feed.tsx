@@ -31,6 +31,7 @@ const Feed: React.FC<IFeedProps> = ({feedDate, pageSize}) => {
   const handlePageClick = (event: { selected: number }) => {
     const newOffset = (event.selected * pageSize) % items.length;
     setItemOffset(newOffset);
+    window.scrollTo(0,0)
   };
 
   return (
@@ -46,7 +47,7 @@ const Feed: React.FC<IFeedProps> = ({feedDate, pageSize}) => {
           <div className="flex flex-col md:flex-row mt-4 md:mt-6 gap-4">
             <div className="w-full md:w-4/5 order-last md:order-first">
               <Heading subheading title="Articles of interest" className="mb-4 border border-blue-400 p-4 !text-blue-400 rounded"/>
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+              <div id="articles-container" className="grid grid-cols-1 md:grid-cols-3 gap-4">
                 {
                   currentItems.map((item) => (
                     <ArticleCard key={item.tid} article={item} />

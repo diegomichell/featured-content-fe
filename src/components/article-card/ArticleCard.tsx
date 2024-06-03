@@ -25,7 +25,7 @@ const ArticleCard: React.FC<IArticleCardProps> = ({article}) => {
       <div className="p-5">
         <h5
           className="mb-2 text-2xl font-bold tracking-tight text-gray-900">{article.titles.normalized}</h5>
-        <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">{article.description}</p>
+        <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">{article.extract}</p>
 
 
         <div className="flex flex-row justify-between">
