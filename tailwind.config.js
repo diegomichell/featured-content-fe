@@ -2,9 +2,14 @@
 module.exports = {
   content: [
     "./src/**/*.{js,jsx,ts,tsx}",
+    "./node_modules/react-tailwindcss-datepicker/dist/index.esm.js",
   ],
   theme: {
     extend: {},
+    fontFamily: {
+      'sans': ['Roboto'],
+      'roboto': ['Roboto', 'sans-serif'],
+    }
   },
   plugins: [],
 }
