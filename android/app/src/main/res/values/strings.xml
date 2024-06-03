@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">feature-content</string>
+    <string name="title_activity_main">feature-content</string>
+    <string name="package_name">com.challenge.FeaturedContent</string>
+    <string name="custom_url_scheme">com.challenge.FeaturedContent</string>
+</resources>
